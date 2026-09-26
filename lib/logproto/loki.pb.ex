@@ -1,4 +1,4 @@
-defmodule Logproto.Direction do
+defmodule LokiLoggerModern.Logproto.Direction do
   @moduledoc false
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -6,19 +6,19 @@ defmodule Logproto.Direction do
   field :BACKWARD, 1
 end
 
-defmodule Logproto.PushRequest do
+defmodule LokiLoggerModern.Logproto.PushRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :streams, 1, repeated: true, type: Logproto.StreamAdapter, deprecated: false
+  field :streams, 1, repeated: true, type: LokiLoggerModern.Logproto.StreamAdapter, deprecated: false
 end
 
-defmodule Logproto.PushResponse do
+defmodule LokiLoggerModern.Logproto.PushResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 end
 
-defmodule Logproto.QueryRequest do
+defmodule LokiLoggerModern.Logproto.QueryRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -26,12 +26,12 @@ defmodule Logproto.QueryRequest do
   field :limit, 2, type: :uint32
   field :start, 3, type: Google.Protobuf.Timestamp, deprecated: false
   field :end, 4, type: Google.Protobuf.Timestamp, deprecated: false
-  field :direction, 5, type: Logproto.Direction, enum: true
+  field :direction, 5, type: LokiLoggerModern.Logproto.Direction, enum: true
   field :shards, 7, repeated: true, type: :string, deprecated: false
-  field :deletes, 8, repeated: true, type: Logproto.Delete
+  field :deletes, 8, repeated: true, type: LokiLoggerModern.Logproto.Delete
 end
 
-defmodule Logproto.SampleQueryRequest do
+defmodule LokiLoggerModern.Logproto.SampleQueryRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -39,10 +39,10 @@ defmodule Logproto.SampleQueryRequest do
   field :start, 2, type: Google.Protobuf.Timestamp, deprecated: false
   field :end, 3, type: Google.Protobuf.Timestamp, deprecated: false
   field :shards, 4, repeated: true, type: :string, deprecated: false
-  field :deletes, 5, repeated: true, type: Logproto.Delete
+  field :deletes, 5, repeated: true, type: LokiLoggerModern.Logproto.Delete
 end
 
-defmodule Logproto.Delete do
+defmodule LokiLoggerModern.Logproto.Delete do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -51,23 +51,23 @@ defmodule Logproto.Delete do
   field :end, 3, type: :int64
 end
 
-defmodule Logproto.QueryResponse do
+defmodule LokiLoggerModern.Logproto.QueryResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :streams, 1, repeated: true, type: Logproto.StreamAdapter, deprecated: false
+  field :streams, 1, repeated: true, type: LokiLoggerModern.Logproto.StreamAdapter, deprecated: false
   field :stats, 2, type: Stats.Ingester, deprecated: false
 end
 
-defmodule Logproto.SampleQueryResponse do
+defmodule LokiLoggerModern.Logproto.SampleQueryResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :series, 1, repeated: true, type: Logproto.Series, deprecated: false
+  field :series, 1, repeated: true, type: LokiLoggerModern.Logproto.Series, deprecated: false
   field :stats, 2, type: Stats.Ingester, deprecated: false
 end
 
-defmodule Logproto.LabelRequest do
+defmodule LokiLoggerModern.Logproto.LabelRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -77,30 +77,30 @@ defmodule Logproto.LabelRequest do
   field :end, 4, type: Google.Protobuf.Timestamp, deprecated: false
 end
 
-defmodule Logproto.RateLimitedStream do
+defmodule LokiLoggerModern.Logproto.RateLimitedStream do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :labels, 1, type: :string
 end
 
-defmodule Logproto.LabelResponse do
+defmodule LokiLoggerModern.Logproto.LabelResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :values, 1, repeated: true, type: :string
 end
 
-defmodule Logproto.StreamAdapter do
+defmodule LokiLoggerModern.Logproto.StreamAdapter do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :labels, 1, type: :string, deprecated: false
-  field :entries, 2, repeated: true, type: Logproto.EntryAdapter, deprecated: false
+  field :entries, 2, repeated: true, type: LokiLoggerModern.Logproto.EntryAdapter, deprecated: false
   field :hash, 3, type: :uint64, deprecated: false
 end
 
-defmodule Logproto.EntryAdapter do
+defmodule LokiLoggerModern.Logproto.EntryAdapter do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -108,7 +108,7 @@ defmodule Logproto.EntryAdapter do
   field :line, 2, type: :string, deprecated: false
 end
 
-defmodule Logproto.Sample do
+defmodule LokiLoggerModern.Logproto.Sample do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -117,7 +117,7 @@ defmodule Logproto.Sample do
   field :hash, 3, type: :uint64, deprecated: false
 end
 
-defmodule Logproto.LegacySample do
+defmodule LokiLoggerModern.Logproto.LegacySample do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -125,16 +125,16 @@ defmodule Logproto.LegacySample do
   field :timestamp_ms, 2, type: :int64, json_name: "timestampMs"
 end
 
-defmodule Logproto.Series do
+defmodule LokiLoggerModern.Logproto.Series do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :labels, 1, type: :string, deprecated: false
-  field :samples, 2, repeated: true, type: Logproto.Sample, deprecated: false
+  field :samples, 2, repeated: true, type: LokiLoggerModern.Logproto.Sample, deprecated: false
   field :streamHash, 3, type: :uint64, deprecated: false
 end
 
-defmodule Logproto.TailRequest do
+defmodule LokiLoggerModern.Logproto.TailRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -144,15 +144,15 @@ defmodule Logproto.TailRequest do
   field :start, 5, type: Google.Protobuf.Timestamp, deprecated: false
 end
 
-defmodule Logproto.TailResponse do
+defmodule LokiLoggerModern.Logproto.TailResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :stream, 1, type: Logproto.StreamAdapter, deprecated: false
-  field :droppedStreams, 2, repeated: true, type: Logproto.DroppedStream
+  field :stream, 1, type: LokiLoggerModern.Logproto.StreamAdapter, deprecated: false
+  field :droppedStreams, 2, repeated: true, type: LokiLoggerModern.Logproto.DroppedStream
 end
 
-defmodule Logproto.SeriesRequest do
+defmodule LokiLoggerModern.Logproto.SeriesRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -162,14 +162,14 @@ defmodule Logproto.SeriesRequest do
   field :shards, 4, repeated: true, type: :string, deprecated: false
 end
 
-defmodule Logproto.SeriesResponse do
+defmodule LokiLoggerModern.Logproto.SeriesResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :series, 1, repeated: true, type: Logproto.SeriesIdentifier, deprecated: false
+  field :series, 1, repeated: true, type: LokiLoggerModern.Logproto.SeriesIdentifier, deprecated: false
 end
 
-defmodule Logproto.SeriesIdentifier.LabelsEntry do
+defmodule LokiLoggerModern.Logproto.SeriesIdentifier.LabelsEntry do
   @moduledoc false
   use Protobuf, map: true, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -177,14 +177,14 @@ defmodule Logproto.SeriesIdentifier.LabelsEntry do
   field :value, 2, type: :string
 end
 
-defmodule Logproto.SeriesIdentifier do
+defmodule LokiLoggerModern.Logproto.SeriesIdentifier do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :labels, 1, repeated: true, type: Logproto.SeriesIdentifier.LabelsEntry, map: true
+  field :labels, 1, repeated: true, type: LokiLoggerModern.Logproto.SeriesIdentifier.LabelsEntry, map: true
 end
 
-defmodule Logproto.DroppedStream do
+defmodule LokiLoggerModern.Logproto.DroppedStream do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -193,17 +193,17 @@ defmodule Logproto.DroppedStream do
   field :labels, 3, type: :string
 end
 
-defmodule Logproto.TimeSeriesChunk do
+defmodule LokiLoggerModern.Logproto.TimeSeriesChunk do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :from_ingester_id, 1, type: :string, json_name: "fromIngesterId"
   field :user_id, 2, type: :string, json_name: "userId"
-  field :labels, 3, repeated: true, type: Logproto.LabelPair
-  field :chunks, 4, repeated: true, type: Logproto.Chunk
+  field :labels, 3, repeated: true, type: LokiLoggerModern.Logproto.LabelPair
+  field :chunks, 4, repeated: true, type: LokiLoggerModern.Logproto.Chunk
 end
 
-defmodule Logproto.LabelPair do
+defmodule LokiLoggerModern.Logproto.LabelPair do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -211,7 +211,7 @@ defmodule Logproto.LabelPair do
   field :value, 2, type: :string
 end
 
-defmodule Logproto.LegacyLabelPair do
+defmodule LokiLoggerModern.Logproto.LegacyLabelPair do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -219,31 +219,31 @@ defmodule Logproto.LegacyLabelPair do
   field :value, 2, type: :bytes
 end
 
-defmodule Logproto.Chunk do
+defmodule LokiLoggerModern.Logproto.Chunk do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :data, 1, type: :bytes
 end
 
-defmodule Logproto.TransferChunksResponse do
+defmodule LokiLoggerModern.Logproto.TransferChunksResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 end
 
-defmodule Logproto.TailersCountRequest do
+defmodule LokiLoggerModern.Logproto.TailersCountRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 end
 
-defmodule Logproto.TailersCountResponse do
+defmodule LokiLoggerModern.Logproto.TailersCountResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :count, 1, type: :uint32
 end
 
-defmodule Logproto.GetChunkIDsRequest do
+defmodule LokiLoggerModern.Logproto.GetChunkIDsRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -252,14 +252,14 @@ defmodule Logproto.GetChunkIDsRequest do
   field :end, 3, type: Google.Protobuf.Timestamp, deprecated: false
 end
 
-defmodule Logproto.GetChunkIDsResponse do
+defmodule LokiLoggerModern.Logproto.GetChunkIDsResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :chunkIDs, 1, repeated: true, type: :string
 end
 
-defmodule Logproto.ChunkRef do
+defmodule LokiLoggerModern.Logproto.ChunkRef do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -270,7 +270,7 @@ defmodule Logproto.ChunkRef do
   field :checksum, 5, type: :uint32, deprecated: false
 end
 
-defmodule Logproto.LabelValuesForMetricNameRequest do
+defmodule LokiLoggerModern.Logproto.LabelValuesForMetricNameRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -281,7 +281,7 @@ defmodule Logproto.LabelValuesForMetricNameRequest do
   field :matchers, 5, type: :string
 end
 
-defmodule Logproto.LabelNamesForMetricNameRequest do
+defmodule LokiLoggerModern.Logproto.LabelNamesForMetricNameRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -290,7 +290,7 @@ defmodule Logproto.LabelNamesForMetricNameRequest do
   field :through, 3, type: :int64, deprecated: false
 end
 
-defmodule Logproto.GetChunkRefRequest do
+defmodule LokiLoggerModern.Logproto.GetChunkRefRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -299,14 +299,14 @@ defmodule Logproto.GetChunkRefRequest do
   field :matchers, 3, type: :string
 end
 
-defmodule Logproto.GetChunkRefResponse do
+defmodule LokiLoggerModern.Logproto.GetChunkRefResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :refs, 1, repeated: true, type: Logproto.ChunkRef
+  field :refs, 1, repeated: true, type: LokiLoggerModern.Logproto.ChunkRef
 end
 
-defmodule Logproto.GetSeriesRequest do
+defmodule LokiLoggerModern.Logproto.GetSeriesRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -315,29 +315,29 @@ defmodule Logproto.GetSeriesRequest do
   field :matchers, 3, type: :string
 end
 
-defmodule Logproto.GetSeriesResponse do
+defmodule LokiLoggerModern.Logproto.GetSeriesResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :series, 1, repeated: true, type: Logproto.IndexSeries, deprecated: false
+  field :series, 1, repeated: true, type: LokiLoggerModern.Logproto.IndexSeries, deprecated: false
 end
 
-defmodule Logproto.IndexSeries do
+defmodule LokiLoggerModern.Logproto.IndexSeries do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :labels, 1, repeated: true, type: Logproto.LabelPair, deprecated: false
+  field :labels, 1, repeated: true, type: LokiLoggerModern.Logproto.LabelPair, deprecated: false
 end
 
-defmodule Logproto.QueryIndexResponse do
+defmodule LokiLoggerModern.Logproto.QueryIndexResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
   field :QueryKey, 1, type: :string
-  field :rows, 2, repeated: true, type: Logproto.Row
+  field :rows, 2, repeated: true, type: LokiLoggerModern.Logproto.Row
 end
 
-defmodule Logproto.Row do
+defmodule LokiLoggerModern.Logproto.Row do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -345,14 +345,14 @@ defmodule Logproto.Row do
   field :value, 2, type: :bytes
 end
 
-defmodule Logproto.QueryIndexRequest do
+defmodule LokiLoggerModern.Logproto.QueryIndexRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
-  field :Queries, 1, repeated: true, type: Logproto.IndexQuery
+  field :Queries, 1, repeated: true, type: LokiLoggerModern.Logproto.IndexQuery
 end
 
-defmodule Logproto.IndexQuery do
+defmodule LokiLoggerModern.Logproto.IndexQuery do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -363,7 +363,7 @@ defmodule Logproto.IndexQuery do
   field :valueEqual, 5, type: :bytes
 end
 
-defmodule Logproto.IndexStatsRequest do
+defmodule LokiLoggerModern.Logproto.IndexStatsRequest do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 
@@ -372,7 +372,7 @@ defmodule Logproto.IndexStatsRequest do
   field :matchers, 3, type: :string
 end
 
-defmodule Logproto.IndexStatsResponse do
+defmodule LokiLoggerModern.Logproto.IndexStatsResponse do
   @moduledoc false
   use Protobuf, protoc_gen_elixir_version: "0.11.0", syntax: :proto3
 

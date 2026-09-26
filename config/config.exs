@@ -1,14 +1,11 @@
 import Config
 
-config :logger,
-  backends: [LokiLogger]
-
-config :logger, :loki_logger,
+config :loki_logger_modern,
   level: :debug,
   format: "$time $metadata[$level] $message\n",
   metadata: :all,
   max_buffer: 300,
-  loki_labels: %{application: "loki_logger_library", elixir_node: node()},
+  loki_labels: %{application: "loki_logger_modern", elixir_node: node()},
   loki_host: "http://localhost:3100",
   loki_scope_org_id: "acme_inc"
 
